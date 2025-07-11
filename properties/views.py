@@ -12,10 +12,10 @@ def property_list(request):
             'id': p.id,
             'title': p.title,
             'description': p.description,
-            'price': str(p.price),  # Decimal to string
+            'price': str(p.price),
             'location': p.location,
             'created_at': p.created_at.isoformat(),
         }
         for p in properties
     ]
-    return JsonResponse(properties_list, safe=False)
+    return JsonResponse({'data': properties_list})  # ✅ Now returns a dict with "data"
